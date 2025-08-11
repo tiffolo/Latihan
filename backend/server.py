@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
+import bcrypt
 from passlib.context import CryptContext
 import os
 from dotenv import load_dotenv
