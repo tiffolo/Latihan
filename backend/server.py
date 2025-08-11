@@ -368,7 +368,14 @@ async def simulate_gps_data(current_user: dict = Depends(get_current_user)):
     
     await manager.broadcast(json.dumps(broadcast_data))
     
-    return {"message": "Data simulasi berhasil dibuat", "data": simulated_data}
+    return {"message": "Data simulasi berhasil dibuat", "data": {
+        "device_id": simulated_data["device_id"],
+        "latitude": simulated_data["latitude"],
+        "longitude": simulated_data["longitude"],
+        "speed": simulated_data["speed"],
+        "status": simulated_data["status"],
+        "timestamp": simulated_data["timestamp"].isoformat()
+    }}
 
 if __name__ == "__main__":
     import uvicorn
