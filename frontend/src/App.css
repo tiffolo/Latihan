@@ -1,0 +1,223 @@
+/* Additional custom styles */
+.App {
+  text-align: center;
+}
+
+/* Map container styles */
+.map-container {
+  height: 500px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom marker styles */
+.vehicle-marker {
+  background: #3B82F6;
+  border: 3px solid white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.vehicle-marker.moving {
+  background: #22C55E;
+  animation: pulse 2s infinite;
+}
+
+.vehicle-marker.stopped {
+  background: #6B7280;
+}
+
+.vehicle-marker.overspeed {
+  background: #EF4444;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Status indicator animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Chart container */
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+/* Table styles */
+.data-table {
+  min-width: 100%;
+}
+
+.data-table th {
+  @apply bg-gray-50 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.data-table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+.data-table tr:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+.data-table tr:hover {
+  @apply bg-gray-100;
+}
+
+/* Status badges */
+.status-online {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800;
+}
+
+.status-offline {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800;
+}
+
+.status-warning {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800;
+}
+
+/* Speed meter styles */
+.speed-meter {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.speed-meter-arc {
+  stroke: #E5E7EB;
+  stroke-width: 8;
+  fill: none;
+}
+
+.speed-meter-progress {
+  stroke: #3B82F6;
+  stroke-width: 8;
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.5s ease;
+}
+
+.speed-meter-progress.overspeed {
+  stroke: #EF4444;
+}
+
+.speed-text {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .map-container {
+    height: 300px;
+  }
+  
+  .speed-meter {
+    width: 150px;
+    height: 75px;
+  }
+  
+  .data-table {
+    font-size: 12px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    @apply px-3 py-2;
+  }
+}
+
+/* Custom form styles */
+.form-group {
+  @apply mb-4;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.form-input {
+  @apply input-field;
+}
+
+.form-error {
+  @apply text-danger-600 text-sm mt-1;
+}
+
+/* GPS input form styles */
+.gps-input-form {
+  @apply space-y-4;
+}
+
+.coordinate-input {
+  @apply grid grid-cols-2 gap-4;
+}
+
+/* Dashboard grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .dashboard-grid .map-section {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Loading states */
+.skeleton {
+  @apply bg-gray-200 animate-pulse rounded;
+}
+
+.skeleton-text {
+  @apply h-4 skeleton mb-2;
+}
+
+.skeleton-title {
+  @apply h-6 skeleton mb-4;
+}
+
+.skeleton-card {
+  @apply h-32 skeleton;
+}
+
+/* WebSocket connection status */
+.connection-status {
+  @apply fixed top-4 right-4 px-3 py-1 rounded-full text-xs font-medium z-50;
+}
+
+.connection-status.connected {
+  @apply bg-success-100 text-success-800;
+}
+
+.connection-status.disconnected {
+  @apply bg-danger-100 text-danger-800;
+}
+
+.connection-status.connecting {
+  @apply bg-warning-100 text-warning-800;
+}
